@@ -1,0 +1,19 @@
+#friend-link
+    if site.data.flink
+        each t in site.data.flink
+            if t.link_title
+                h2!= t.link_title
+            #fd-link
+                each f in t.link_list
+                    - var avatar = f.avatar || theme.error_img.f_link_img || ''
+                    - var name = f.name ? f.name : ' '
+                    - var desc = f.desc ? f.desc : ' '
+                    if f.link
+                        .fd-link-item
+                            a.fd-link(href=f.link title=f.name target="_blank")
+                            .fd-link-avatar
+                                img(src=url_for(avatar) alt=f.name)
+                            .fd-link-info
+                                .fd-link-name=name
+                                .fd-link-desc.webkit-box=desc
+!= page.content

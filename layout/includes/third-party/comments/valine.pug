@@ -1,0 +1,21 @@
+script.
+    function loadValine () {
+        function initValine () {
+            new Valine(Object.assign({
+                el: '#valine-comment',
+                appId: '#{theme.valine.appId}',
+                appKey: '#{theme.valine.appKey}',
+                avatar: '#{theme.valine.avatar}',
+                serverURLs: '#{theme.valine.serverURLs}',
+                path: window.location.pathname,
+                visitor: #{theme.valine.visitor}
+            }, !{JSON.stringify(theme.valine.option)}))
+        }
+
+        if (typeof Valine === 'function') initValine()
+        else getScript('!{url_for(theme.CDN.valine)}').then(initValine)
+    }
+
+    if ('!{theme.comment.use}' === 'valine'){
+        loadValine()
+    }

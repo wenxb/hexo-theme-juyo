@@ -1,0 +1,13 @@
+#local-search
+    .search-inner
+        .local-search-input
+            .local-search-content
+                input#search-input(autofocus="autofocus" autocapitalize="off" autocomplete="off" placeholder=_p("search.search-placeholder") type="text")
+                button.search-close-btn.fa-solid.fa-xmark
+        .search-headline
+            span=_p('search.local-search')
+        #local-search-results
+        .local-search-loding(style="text-align:center")
+            i.fas.fa-spinner.fa-pulse
+            span= '  ' + _p("search.loading")
+    #search-mask

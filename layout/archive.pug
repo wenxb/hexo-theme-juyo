@@ -1,0 +1,21 @@
+extends includes/layout
+
+block content
+    .page-inner
+        #archives
+            .count.h3='共计 ' + site.posts.length + ' 篇文章'
+            br
+            - var year
+            each article in page.posts.data
+                - var title = article.title || _p('no_title')
+                - var years = date(article.date, 'YYYY-MM-DD')
+                - var month = date(article.date, 'MM-DD')
+                - var flagYear = date(article.date, 'YYYY')
+                if flagYear !== year
+                    - year = flagYear
+                    .years=year
+                a(href=url_for(article.path)).post-sort-item
+                    .post-sort-info
+                        span= title
+                        span= month
+            include includes/component/pagination

@@ -1,0 +1,13 @@
+extends includes/layout
+
+block content
+    .page-inner
+        case page.type
+            when 'categories'
+                include includes/page/categories.pug
+            when 'tags'
+                include includes/page/tags.pug
+            when 'link'
+                include includes/page/link.pug
+            default
+                include includes/page/default_page

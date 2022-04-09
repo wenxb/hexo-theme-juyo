@@ -1,0 +1,7 @@
+page:
+  archive: '归档'
+  tag: '标签'
+  category: '分类'
+  error404: '404未找到'
+
+no_title: 无标题

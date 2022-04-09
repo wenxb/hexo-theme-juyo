@@ -1,0 +1,160 @@
+//default
+$default-theme-color = #5aa2f4
+$default-link-color = #0066cc
+$default-font-family = apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Lato,Roboto,'PingFang-SC','Microsoft YaHei',sans-serif
+// code
+$line-height-code-block = 1.6
+//font
+$global-font-size = hexo-config('font.global_size') ? convert(hexo-config('font.global_size')) : 16px
+$font-family = hexo-config('font.font_family') ? unquote(hexo-config('font.font_family')) : $default-font-family
+$gray-font-color = #999999
+$font-light-color = #656577
+$font-white = #fff
+$font-color = #3c4858
+$default-code-font = consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif
+$code-font-family = hexo-config('font.code-font-family') ? unquote(hexo-config('font.code-font-family')) : $default-code-font
+$code-font-size = hexo-config('font.code-font-size') ? convert(hexo-config('font.code-font-size')) : var(--main-font-size)
+//color
+$footer-bg = hexo-config('footer.bgc') ? convert(hexo-config('footer.bgc')) : ''
+$input-bg = #f6f6f8
+$depth-hover-bg = #fafafa
+$main-border-color = rgba(49, 51, 53,.1)
+$link-color = hexo-config('theme_color.link') ? convert(hexo-config('theme_color.link')) : $default-link-color
+$link-light-color = lighten($link-color, 92%)
+$link-hover-color = hexo-config('theme_color.link') ? convert(hexo-config('theme_color.link')) : $default-link-color
+$meta-info-color = #718096
+$body-bg = #f2f5f8
+$nav-hover-bg = rgba(255,255,255,.3)
+$main-hover-bg = #fafafa
+$main-bg = #fff
+$main-gray-bg = #f9f9f9
+$main-bg-filter = rgba(255,255,255,0.7)
+$shadow-color = rgba(0, 27, 50, 0.15)
+$main-shadow = 0 0 12px -5px var(--shadow-color)
+$theme-color = hexo-config('theme_color.main') ? convert(hexo-config('theme_color.main')) : $default-theme-color
+$nav-font = $font-white
+$title-color = #333
+$text-selection-color = #3390ff
+$main-btn-bg = #f2f5f8
+$btn-red-bg = #f44336
+$font-black = #4C4948
+$btn-red-hover-bg = darken($btn-red-bg, 20%)
+$main-btn-hover-bg = darken($main-btn-bg, 5%)
+//config
+$btn-radius = 4px
+$global-radius = hexo-config('global_radius') ? convert(hexo-config('global_radius')) : 2px
+$page-info-height = hexo-config('top_img.height') ? convert(hexo-config('top_img.height')) : false
+
+//flex
+$flex-start = unquote('flex-start')
+$flex-end = unquote('flex-end')
+$center = $unquote('center')
+if hexo-config('top_img.text_align.post') == 'left'
+  $post-info-text-align = $flex-start
+else if hexo-config('top_img.text_align.post') == 'right'
+  $post-info-text-align = $flex-end
+else
+  $post-info-text-align = $center
+if hexo-config('top_img.text_align.page') == 'left'
+  $page-info-text-align = $flex-start
+else if hexo-config('top_img.text_align.post') == 'right'
+  $page-info-text-align = $flex-end
+else
+  $page-info-text-align = $center
+if hexo-config('top_img.text_align.post') == 'left'
+  $index-info-text-align = $flex-start
+else if hexo-config('top_img.text_align.post') == 'right'
+  $index-info-text-align = $flex-end
+else
+  $index-info-text-align = $center
+
+
+// Button
+$button-bg = hexo-config('theme_color.boton_color') ? hexo-config('theme_color.boton_color') : $theme-color
+$button-hover-color = darken($button-bg, 5%)
+$button-color = #fff
+$pseudo-hover = $button-hover-color
+// table
+$table-thead-bg = #99a9bf
+// gallery
+$gallery-color = #fff
+// tag-hide
+$tag-hide-bg = $theme-color
+$tag-hide-toggle-bg = #f0f0f0
+// Tag Plugins - Note
+hexo-config('note.light_bg_offset') is a 'unit' ? ($lbg = unit(hexo-config('note.light_bg_offset'), '%')) : ($lbg = 0)
+$note-types = 'default' 'primary' 'info' 'success' 'warning' 'danger'
+// Default
+$note-default-border = #777
+$note-default-bg = lighten(spin($note-default-border, 0), 94% + $lbg)
+$note-default-text = $note-default-border
+$note-default-icon = '\f0a9'
+$note-modern-default-border = #e1e1e1
+$note-modern-default-bg = lighten(spin($note-modern-default-border, 10), 60% + ($lbg * 4))
+$note-modern-default-text = #666
+$note-modern-default-hover = darken(spin($note-modern-default-text, -10), 32%)
+// Primary
+$note-primary-border = #6f42c1
+$note-primary-bg = lighten(spin($note-primary-border, 10), 92% + $lbg)
+$note-primary-text = $note-primary-border
+$note-primary-icon = '\f055'
+$note-modern-primary-border = #e1c2ff
+$note-modern-primary-bg = lighten(spin($note-modern-primary-border, 10), 40% + ($lbg * 4))
+$note-modern-primary-text = #6f42c1
+$note-modern-primary-hover = darken(spin($note-modern-primary-text, -10), 22%)
+// Info
+$note-info-border = #428bca
+$note-info-bg = lighten(spin($note-info-border, -10), 91% + $lbg)
+$note-info-text = $note-info-border
+$note-info-icon = '\f05a'
+$note-modern-info-border = #b3e5ef
+$note-modern-info-bg = lighten(spin($note-modern-info-border, 10), 50% + ($lbg * 4))
+$note-modern-info-text = #31708f
+$note-modern-info-hover = darken(spin($note-modern-info-text, -10), 32%)
+// Success
+$note-success-border = #5cb85c
+$note-success-bg = lighten(spin($note-success-border, 10), 90% + $lbg)
+$note-success-text = $note-success-border
+$note-success-icon = '\f058'
+$note-modern-success-border = #d0e6be
+$note-modern-success-bg = lighten(spin($note-modern-success-border, 10), 40% + ($lbg * 4))
+$note-modern-success-text = #3c763d
+$note-modern-success-hover = darken(spin($note-modern-success-text, -10), 27%)
+// Warning
+$note-warning-border = #f0ad4e
+$note-warning-bg = lighten(spin($note-warning-border, 10), 88% + $lbg)
+$note-warning-text = $note-warning-border
+$note-warning-icon = '\f06a'
+$note-modern-warning-border = #fae4cd
+$note-modern-warning-bg = lighten(spin($note-modern-warning-border, 10), 43% + ($lbg * 4))
+$note-modern-warning-text = #8a6d3b
+$note-modern-warning-hover = darken(spin($note-modern-warning-text, -10), 18%)
+// Danger
+$note-danger-border = #d9534f
+$note-danger-bg = lighten(spin($note-danger-border, -10), 92% + $lbg)
+$note-danger-text = $note-danger-border
+$note-danger-icon = '\f056'
+$note-modern-danger-border = #ebcdd2
+$note-modern-danger-bg = lighten(spin($note-modern-danger-border, 10), 35% + ($lbg * 4))
+$note-modern-danger-text = #a94442
+$note-modern-danger-hover = darken(spin($note-modern-danger-text, -10), 22%)
+// Tag Plugins - Button/note
+$color-types = 'blue' 'pink' 'red' 'purple' 'orange' 'green'
+$btn-color = #fff
+$btn-default-color = #777
+$tagsP-blue-color = #428bca
+$tagsP-pink-color = #FF69B4
+$tagsP-red-color = #FF0000
+$tagsP-orange-color = #FF8C00
+$tagsP-purple-color = #6f42c1
+$tagsP-green-color = #5cb85c
+// Tag Plugins - Tab
+$tab-border-color = #f0f0f0
+$tab-botton-bg = #f0f0f0
+$tab-botton-color = $font-color
+$tab-button-hover-bg = darken($tab-border-color, 8)
+$tab-active-border-color = $theme-color
+$tab-button-active-bg = $main-bg
+$tab-to-top-color = #99a9bf
+// Tag Plugins - timeline
+$timeline-default-color = $theme-color

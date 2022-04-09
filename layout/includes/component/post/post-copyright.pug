@@ -1,0 +1,17 @@
+-
+    var title = page.title;
+    var url = page.permalink
+    var author = config.author || theme.title
+.post-copyright
+    .post-copyright-title
+        span=title
+    .post-copyright-url
+        a(href=url_for(url))=url
+        button.post-copyright-copybtn(onclick="jyUtils.copyPageUrl()")
+            i.fa-fw.fas.fa-paste
+    .post-copyright-notice
+        span
+            |文章除特别声明外，均采用
+            a(href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh") CC BY-NC-SA 4.0
+            |许可协议，转载请注明来自
+            a(href=config.url)=author

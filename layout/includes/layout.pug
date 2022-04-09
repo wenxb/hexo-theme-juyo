@@ -1,0 +1,28 @@
+- var hideAside = !theme.sidebar.enable || page.side === false ? 'hide-aside' : ''
+
+doctype html
+html(lang=config.language data-theme=theme.display_mode)
+    head
+        include head
+    body
+        if theme.loading_anime.enable
+            !=partial('includes/component/loading/loading', {}, {cache: true})
+        !=partial('includes/component/header/mobile-header', {}, {cache: true})
+        if page.type !== '404'
+            #body-wrap
+                include component/header/index
+                .layout
+                    .content-inner.container
+                        .row#main
+                            main.col-md-9.col-xs-12
+                                block content
+                            aside#sidebar.col-md-3.hidden-xs
+                                include component/sidebar
+                    !=partial('includes/component/footer', {}, {cache: true})
+            !=partial('includes/component/rightside/index', {}, {cache: true})
+        else
+            include ./page/404.pug
+        if theme.local_search.enable
+            !=partial('includes/component/search/index', {}, {cache: true})
+
+include additional

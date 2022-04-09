@@ -1,0 +1,20 @@
+.side-widget-count.side-widget
+    .side-headline
+        i.fas.fa-chart-line
+        span= _p('side.siteCount.headline')
+    ul.side-site-count
+        li.site-count
+            .title= _p('side.siteCount.total_post') + " :"
+            .count= site.posts.length
+        li.site-count
+            .title= _p('side.siteCount.runtime') + " :"
+            .count#site-runtime-day
+        li.site-count
+            .title=_p('side.siteCount.total_word') + " :"
+            .count=symbolsCountTotal(site)
+        li.site-count
+            .title= _p('side.siteCount.total_uv') + " :"
+            .count#busuanzi_value_site_uv
+        li.site-count
+            .title= _p('side.siteCount.total_pv') + " :"
+            .count#busuanzi_value_site_pv

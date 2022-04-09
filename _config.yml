@@ -1,0 +1,348 @@
+#############################################################
+########################### 主题相关 #########################
+#############################################################
+
+favicon:
+
+logo:
+
+title:
+sub_title:
+  enable: true
+  text: A simple and practical Hexo theme
+
+# -------------导航菜单--------------
+# 菜单:
+# title: link || icon
+# title || icon:
+#   sub_title: link || icon
+menu:
+  首页: / || fas fa-home
+  文章: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  友情链接: /link/ || fas fa-heart
+  关于: /about/ || fas fa-user
+
+avatar:
+  img:
+
+Open_Graph: true
+
+theme_color:
+  main: '#5aa2f4'
+  boton_color:
+  link: '#0066cc'
+  link_hover:
+
+# 全局圆角大小
+global_radius: 4px
+
+# ----------字体样式----------
+font:
+  # 全局字体大小
+  global_size: 17px
+  # 字体样式 默认： apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Lato,Roboto,'PingFang-SC','Microsoft YaHei',sans-serif
+  font_family:
+  code-font-family:
+
+#############################################################
+######################### 页面相关 ###########################
+#############################################################
+
+# 主页图文卡片
+#    - img: 图片
+#      url: 跳转链接
+#      text: 文字
+#      target: 跳转方式 _blank(跳转新窗口) _self(不跳转)
+index_card:
+  enable: true
+  card:
+    - img:
+      url:
+      text:
+      target:
+
+# 导航菜单位置 left | center | right
+menu_align:
+  enable: left
+
+# 顶部图片
+top_img:
+  enable: true
+  # 文字对齐方式 left | center | right
+  text_align:
+    index: left
+    page: center
+    post: left
+  # 高度 300px/100vh/12rem 或 false 关闭背景图
+  height: 42vh
+  background:
+    index:
+    archives:
+    categorys:
+    tags:
+    default: img/banner.svg
+
+# 默认文章封面
+default_post: img/default-cover.svg
+
+# 文章头部信息
+post_meta:
+  categories: true
+
+# 文章二维码
+qrcode:
+  enable: true
+
+# 版权声明
+post_copyright:
+  enable: true
+
+# 相关文章
+related_post:
+  enable: true
+  limit: 4
+
+# 赞赏
+reward:
+  enable: true
+  rewards:
+    - img:
+      url:
+      text: 微信
+    - img:
+      link:
+      text: 支付宝
+
+comment:
+  use: valine
+  text: true
+  count: true
+
+valine:
+  appId:
+  appKey:
+  avatar: mp
+  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+  bg: # valine background
+  visitor: true
+  option:
+
+#############################################################
+######################## 功能相关 ############################
+############################################################
+
+# 图片灯箱
+lightbox: true
+
+# 网站开始时间
+runtime:
+  start_time: #例如 2022-03-09
+
+# css前缀 兼容浏览器
+css_prefix: true
+# 暗黑模式
+darkmode:
+  enable: true
+  button: true
+  # Switch dark/light mode automatically (自动切换 dark mode和 light mode)
+  # autoChangeMode: 1  根据系统设置，如果系统不支持暗模式，它会在下午6点到早上6点之间切换暗黑模式
+  # autoChangeMode: 2  在下午6点到早上6点之间切换暗黑模式
+  # autoChangeMode: false
+  autoChangeMode: false
+# 网站默认显示模式
+# light (default) / dark
+display_mode: light
+
+# mermaid
+# see https://github.com/mermaid-js/mermaid
+mermaid:
+  enable: true
+  # themes: default/forest/dark/neutral
+  theme:
+    light: default
+    dark: dark
+
+# Lazyload (图片懒加载)
+# https://github.com/verlok/vanilla-lazyload
+lazyload:
+  enable: true
+  field: site # site/post
+  placeholder: img/loading.gif
+  blur: true
+
+# 中英文间空格
+pangu:
+  enable: true
+# 本地搜索
+local_search:
+  enable: true
+
+facebook_comments:
+  app_id:
+  user_id:
+
+pwa:
+  enable: false
+  manifest:
+  mask_icon:
+  apple_touch_icon:
+  favicon_32_32:
+  favicon_16_16:
+  theme_color:
+
+# 侧边栏
+sidebar:
+  enable: true
+  widget:
+    auther: true
+    categories: true
+    tags: true
+    site_count: true
+
+# 加载动画
+loading_anime:
+  enable: true
+  style:
+
+# pjax
+pjax:
+  enable: true
+  exclude:
+  # - xxxx
+  # - xxxx
+
+## -------------站长验证 填入密钥-------------
+site_verification:
+  - name: baidu-site-verification
+    content:
+  - name: google-site-verification
+    content:
+
+# 弹窗
+# position 彈窗位置
+# 可选 top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
+snackbar:
+  enable: true
+  position: top-center
+  bg_light: '#49b1f5'
+  bg_dark: '#1f1f1f'
+
+# 页脚相关
+footer:
+  bgc: '#fff'          # 背景颜色
+  show_copy: true      # 显示底部版权
+  show_runtime:
+    enable: true       # 显示运行天数
+    text: '已经度过了 '  # 运行时间前的文字
+  one: #第一行显示内容
+    html:
+  two: #第二行显示内容
+    html:
+  three: #第三行显示内容
+    html:
+
+# Code Blocks (代码相关)
+# --------------------------------------
+highlight_theme: mac light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_copy: true # copy button
+highlight_lang: true # 显示代码语言
+highlight_shrink: false # true: 缩小代码块 / false: 展开代码块 | none: 展开代码块并隐藏按钮
+highlight_height_limit: 100 # unit: px
+code_word_wrap: false
+
+# copy: 复制内容后添加版权信息
+copy:
+  enable: true
+  copyright:
+    enable: true
+    limit_count: 50
+
+# 笔记引用
+note:
+  # 注意标签样式值:
+  #  - simple    b-callout旧的警告风格。默认。
+  #  - modern    b-callout新(v2-v3)警报样式。
+  #  - flat      带背景的平面标注样式，像在 Mozilla 或 StackOverflow 上
+  #  - disabled  禁用所有CSS样式导入的注意标签
+  style: flat
+  icons: true
+  border_radius: 3
+  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+  # 偏移量也应用于标签标签变量. 此选项可用于已禁用的注释标记.
+  light_bg_offset: 0
+
+aplayer:
+  enable: true
+  per_page: true
+
+# 卜算子统计
+busuanzi:
+  # 网站总浏览量
+  site_pv: true
+  # 文章浏览量
+  page_pv: true
+  # 网站总访客数
+  site_uv: true
+
+## ----------网站统计,填入 ID----------#
+# Baidu https://tongji.baidu.com/web/welcome/login
+baidu_analytics:
+
+# Google https://analytics.google.com/analytics/web/
+google_analytics:
+
+# Microsoft https://clarity.microsoft.com/
+microsoft_analytics:
+
+# CNZZ https://www.umeng.com/
+cnzz_analytics:
+
+# Cloudflare https://www.cloudflare.com/zh-tw/web-analytics/
+cloudflare_analytics:
+
+# ------------主题核心CDN地址------------
+
+CDN:
+  main_css: '/css/index.css'
+  main_js: '/js/main.js'
+  utils_js: '/js/utils.js'
+  bootstrap: 'https://cdn.juyovo.com/libs/bootstrap/3.4.1/css/bootstrap.min.css'
+  jquery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js'
+  pjax: 'https://cdn.juyovo.com/libs/pjax/pjax.min.js'
+  qrcode: 'https://cdn.juyovo.com/libs/qrcodejs/1.0.0/qrcode.min.js'
+
+  valine: 'https://cdn.juyovo.com/libs/valine/1.4.18/Valine.min.js'
+  twikoo: 'https://cdn.juyovo.com/libs/twikoo/1.5.1/twikoo.all.min.js'
+  waline: 'https://cdn.juyovo.com/libs/waline/1.6.0/Waline.min.js'
+
+  local_search: '/js/search/local-search.js'
+
+  echarts: 'https://cdn.juyovo.com/libs/echarts/echarts.min.js'
+  echarts_gl: 'https://cdn.juyovo.com/libs/echarts/echarts-gl.min.js'
+  mermaid: 'https://cdn.juyovo.com/libs/mermaid/mermaid.min.js'
+  mathjax: 'https://cdn.juyovo.com/libs/mathjax/3.2.0/es5/a11y/assistive-mml.min.js'
+
+  busuanzi: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
+
+  lazyload: 'https://cdn.juyovo.com/libs/vanilla-lazyload/17.3.1/lazyload.iife.min.js'
+  pangu: 'https://cdn.juyovo.com/libs/pangu/4.0.7/pangu.min.js'
+
+  medium_zoom: 'https://cdn.juyovo.com/libs/medium-zoom/medium-zoom.min.js'
+
+  snackbar_css: 'https://cdn.juyovo.com/libs/snackbarjs/0.1.16/snackbar.min.css'
+  snackbar: 'https://cdn.juyovo.com/libs/snackbarjs/0.1.16/snackbar.min.js'
+
+  fontawesome: 'https://cdn.juyovo.com/libs/font-awesome/6.1.1/css/all.min.css'
+
+  aplayer_css: 'https://cdn.juyovo.com/libs/aplayer/1.10.1/APlayer.min.css'
+  aplayer_js: 'https://cdn.juyovo.com/libs/aplayer/1.10.1/APlayer.min.js'
+  meting_js: 'https://cdn.juyovo.com/libs/metingjs/1.2.0/Meting-wipe.min.js'
+
+  prismjs_js: 'https://cdn.juyovo.com/libs/prismjs/prism.min.js'
+  prismjs_lineNumber_js: 'https://cdn.juyovo.com/libs/prismjs/plugins/line-numbers/prism-line-numbers.min.js'
+  prismjs_autoloader: 'https://cdn.juyovo.com/libs/prismjs/plugins/autoloader/prism-autoloader.min.js'
+
+  flickr_justified_gallery_js: 'https://cdn.juyovo.com/libs/flickr-justified-gallery/fjGallery.min.js'
+  flickr_justified_gallery_css: 'https://cdn.juyovo.com/libs/flickr-justified-gallery/fjGallery.min.css'

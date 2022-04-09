@@ -1,0 +1,11 @@
+script.
+    function panguFn () {
+        if (typeof pangu === 'object') pangu.autoSpacingPage()
+        else {
+            getScript('!{url_for(theme.CDN.pangu)}')
+                .then(() => {
+                    pangu.autoSpacingPage()
+                })
+        }
+    }
+

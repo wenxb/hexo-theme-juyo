@@ -1,0 +1,31 @@
+{
+  "name": "hexo-theme-juyo",
+  "version": "1.0.1",
+  "description": "A simple and practical Hexo theme",
+  "main": "package.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "juyo",
+    "WENXB",
+    "hexo-theme-juyo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wenxb/hexo-theme-juyo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wenxb/hexo-theme-juyo/issues",
+    "email": "i@youngwen.com"
+  },
+  "homepage": "https://hexo.juyovo.com",
+  "author": "WENXB",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^2.0.1"
+  }
+}

@@ -1,0 +1,12 @@
+
+.side-sticky
+    if is_post()
+        include sidebar/side-post-toc
+    if theme.sidebar.widget.auther
+        include sidebar/auther-card
+    if theme.sidebar.widget.categories
+        include sidebar/side-categories
+    if theme.sidebar.widget.tags
+    include sidebar/side-tags
+    if theme.sidebar.widget.site_count
+        include sidebar/side-site-count

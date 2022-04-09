@@ -1,0 +1,24 @@
+extends includes/layout
+
+block content
+    .post-inner
+        !=page.content
+        .post-end
+            span='-------- 本文已结束 '
+            i.fa-solid.fa-feather
+            span=' 喜欢请分享 --------'
+        if theme.reward.enable
+            !=partial('includes/component/post/post-reward', {}, {cache: true})
+        include includes/component/post/post-tools
+        if theme.post_copyright.enable && page.copyright !== false
+            include includes/component/post/post-copyright
+        include includes/component/pagination
+        if theme.related_post.enable
+            .head-line
+                span=_p('post.related')
+            include includes/component/post/post-related
+        if page.comment || theme.comment.use
+            .head-line
+                span=_p('post.comment')
+            !=partial('includes/third-party/comments/index', {}, {cache: true})
+

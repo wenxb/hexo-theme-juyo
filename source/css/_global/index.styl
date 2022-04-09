@@ -1,0 +1,152 @@
+:root
+  --footer-bg: $footer-bg
+  --input-bg: $input-bg
+  --main-gray-bg: $main-gray-bg
+  --font-light-color: $font-light-color
+  --gray-font-color: $gray-font-color
+  --main-btn-bg: $main-btn-bg
+  --main-btn-hover-bg: $main-btn-hover-bg
+  --btn-red-bg: $btn-red-bg
+  --btn-red-hover-bg: $btn-red-hover-bg
+  --depth-hover-bg: $depth-hover-bg
+  --main-border-color: $main-border-color
+  --link-light-color: $link-light-color
+  --link-hover-color: $link-hover-color
+  --link-color: $link-color
+  --meta-info-color: $meta-info-color
+  --main-font-size: $global-font-size
+  --main-radius: $global-radius
+  --main-hover-bg: $main-hover-bg
+  --nav-font: $nav-font
+  --font-color: $font-color
+  --theme-color: $theme-color
+  --title-color: $title-color
+  --shadow-color: $shadow-color
+  --main-shadow: $main-shadow
+  --main-bg: $main-bg
+  --nav-hover-bg: $nav-hover-bg
+  --font-white: $font-white
+  --body-bg: $body-bg
+  --btn-hover-color: $button-hover-color
+  --btn-color: $button-color
+  --btn-bg: $button-bg
+  --tab-border-color: $tab-border-color
+  --tab-botton-bg: $tab-botton-bg
+  --tab-botton-color: $tab-botton-color
+  --tab-button-hover-bg: $tab-button-hover-bg
+  --tab-button-active-bg: $tab-button-active-bg
+*
+  margin: 0
+  padding: 0
+  box-sizing border-box
+
+html
+  font-size 20px
+  height 100%
+body
+  position: relative
+  min-height: 100%
+  color: var(--font-color)
+  background-color: var(--body-bg);
+  font-size: var(--main-font-size)
+  line-height: 2
+  font-weight: 400;
+  font-family: $font-family;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  #body-wrap
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+h1,h2,h3,h4,h5,h6
+  position: relative
+  margin: 1rem 0 .7rem
+  color: var(--title-color)
+  font-weight: bold
+  code
+    font-size: inherit !important
+
+table
+  display: table
+  border-spacing: 0
+  border-collapse: collapse
+  empty-cells: show
+  th,
+  td
+    padding: .3rem .6rem
+    border: 1px solid var(--light-grey)
+    vertical-align: middle
+
+*::selection
+  background: $text-selection-color
+  color: #fafafa
+
+input,button
+  background:none
+  outline:none
+  border:none
+  padding: 0
+  &::-webkit-input-placeholder
+    color #999
+    font-size 15px
+
+ul,ol,li
+  list-style:none
+
+a
+  color: $link-color
+  text-decoration: none
+  word-wrap: break-word
+  transition: all .2s
+  overflow-wrap: break-word
+  &:hover
+    text-decoration none
+    color var(--link-hover-color)
+  &:focus
+    text-decoration none
+img
+  border: none
+  transition: all .3s
+  vertical-align: middle
+  &[src=''],
+  &:not([src])
+    opacity: 0
+
+if hexo-config('lazyload.enable') && hexo-config('lazyload.blur') && !hexo-config('lazyload.placeholder')
+  img
+    &[data-lazy-src]:not(.loaded)
+      filter: blur(8px) brightness(1)
+
+    &[data-lazy-src].error
+      filter: none
+.copy-true
+  user-select: all
+.img-alt
+  margin: -10px 0 10px
+  color: #858585
+
+  &:hover
+    text-decoration: none !important
+
+blockquote
+  margin: 0 0 20px
+  padding: 12px 15px
+  border-left: 3px solid $blockquote-padding-color
+  background-color: var(--blockquote-bg)
+  color: var(--blockquote-color)
+  & > :last-child
+    margin-bottom: 0 !important
+
+&::-webkit-scrollbar-thumb
+  background-color: #c4c6c9;
+  border-radius: 6px;
+  &:hover
+    background-color: #a0a2a4;
+&::-webkit-scrollbar-corner
+  background-color: transparent;
+
+&::-webkit-scrollbar
+  width: 6px;
+  height: 6px;
+
+

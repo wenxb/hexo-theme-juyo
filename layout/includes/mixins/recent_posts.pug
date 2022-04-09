@@ -1,0 +1,27 @@
+mixin recent_post
+    each article in page.posts.data
+        -
+            let cover = article.cover || theme.default_post || false
+            let link = article.path || article.link
+            let title = article.title || _p('no_title')
+            let extract = article.excerpt || strip_html(article.content).substring(0, 150)
+        section.article-item.row.c-shadow
+            .article-cover
+                a(href=url_for(link))
+                    div
+                        if cover !== false
+                            img(src=url_for(cover) alt=title)
+            .article-content
+                .article-info
+                    .title
+                        a(href=url_for(link))
+                            h2!=title
+                    .extract!=extract
+                .article-meta
+                    .category
+                        i.fas.fa-category
+                        if article.categories.data.length > 0
+                            each item in article.categories.data
+                                a.cate(href=url_for(item.path) title=item.name)=item.name
+                    .time
+                        time.article-date-created(title=_p('post.created') + ":" + full_date(article.date, 'YYYY-MM-DD hh:mm:ss'))=date(article.date, 'YYYY-M-D')

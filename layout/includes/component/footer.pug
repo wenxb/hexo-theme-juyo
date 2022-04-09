@@ -1,0 +1,17 @@
+footer#footer
+    .footer-inner
+        if theme.footer.show_copy
+            != '<a href="https://hexo.io">Hexo </a><i class="fa-solid fa-heart"></i><a href="https://hexo.juyovo.com"> Juyo</a><br>'
+        .one
+            if theme.footer.one.html
+                !=theme.footer.one.html
+        .two
+            if theme.footer.two.html
+                !=theme.footer.two.html
+        .three
+            if theme.footer.three.html
+                !=theme.footer.three.html
+        if theme.footer.show_runtime.enable
+            .site-runtime
+                != theme.footer.show_runtime.text
+                #site-runtime

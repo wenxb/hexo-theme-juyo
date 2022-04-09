@@ -1,0 +1,24 @@
+-
+    var options = {
+        prev_text: '<i class="fas fa-chevron-left fa-fw"></i>',
+        next_text: '<i class="fas fa-chevron-right fa-fw"></i>',
+        mid_size: 1,
+        escape: false
+    }
+if is_post()
+    #pagination
+        .post-pagination
+            .prev-post
+                if(page.prev)
+                    a(href=url_for(page.prev.path))
+                        i.fa-solid.fa-angle-left
+                        =' '+page.prev.title
+            .next-post
+                if(page.next)
+                    a(href=url_for(page.next.path))
+                        =page.next.title+' '
+                        i.fa-solid.fa-angle-right
+else
+    #pagination
+        .pagination
+            !=paginator(options)

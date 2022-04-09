@@ -1,0 +1,7 @@
+extends includes/layout
+
+block content
+    include includes/mixins/recent_posts
+    article.mb-20.article-lists
+        +recent_post()
+    include includes/component/pagination

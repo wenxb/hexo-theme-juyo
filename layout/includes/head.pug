@@ -1,0 +1,43 @@
+-
+ var pageTitle
+ var subTitle =  config.subtitle ? ' - ' + config.subtitle : ' - ' + config.description || ''
+ if (is_archive()) pageTitle = fragment_cache('findArchivesTitle', function(){return findArchivesTitle(theme.menu);})
+ else if (is_month()) pageTitle = page.month + ' - ' + page.year
+ else if (is_year()) pageTitle += page.year
+ else if (is_tag()) pageTitle += (page.tag ? page.tag : '')
+ else if (is_category()) pageTitle = (page.category ? page.category : '')
+ else if (is_current('/404.html', [strict])) pageTitle = _p('page.error404')
+ else pageTitle = page.title || config.title ||  ''
+
+ var Title = is_home() || !pageTitle ? config.title + subTitle : pageTitle + ' - ' + config.title
+ var pageKeywords
+ if (page.keywords) pageKeywords = Array.isArray(page.keywords) ? (page.keywords).join(',') :  ([]).join(',') || page.keywords
+ else pageKeywords = Array.isArray(config.keywords) ? (config.keywords).join(','):  ([]).join(',') || config.keywords
+ var pageAuthor = config.author || page.author || ''
+ var themeColor = theme.display_mode === 'dark' ? '#0d0d0d' : '#ffffff'
+
+meta(charset='UTF-8')
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
+meta(name="viewport" content="width=device-width,initial-scale=1")
+meta(name="theme-color" content=themeColor)
+title= Title
+if pageKeywords
+    meta(name="keywords" content=pageKeywords)
+meta(name="author" content=pageAuthor)
+include head/Open-Graph
+!=favicon_tag(theme.favicon || config.favicon)
+if (theme.pwa && theme.pwa.enable)
+ !=partial('includes/head/pwa', {}, {cache: true})
+!=partial('includes/head/preconnect', {}, {cache: true})
+!=partial('includes/head/site_verification', {}, {cache: true})
+
+link(rel="canonical" href=authority())
+link(rel="stylesheet" href=url_for(theme.CDN.bootstrap))
+link(rel='stylesheet' href=url_for(theme.CDN.fontawesome) media="print" onload="this.media='all'")
+link(rel='stylesheet' href=url_for(theme.CDN.main_css))
+if (theme.snackbar && theme.snackbar.enable)
+ link(rel='stylesheet', href=url_for(theme.CDN.snackbar_css) media="print" onload="this.media='all'")
+!=partial('includes/head/analytics', {}, {cache: true})
+
+include head/config-site
+!=fragment_cache('injectHeadJs', function(){return inject_head_js()})

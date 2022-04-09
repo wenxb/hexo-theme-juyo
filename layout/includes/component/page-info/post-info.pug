@@ -1,0 +1,22 @@
+.post-meta-info
+    if (theme.post_meta.categories && page.categories.data.length > 0)
+        .post-meta-categories
+            each cate in page.categories.data
+                .cate
+                    i.fa-fw.fas.fa-book-bookmark
+                    a(href=url_for(cate.path))=cate.name
+        .post-meta-tags.hidden-xs
+            each cate in page.tags.data
+                a.tag(href=url_for(cate.path))='# ' + cate.name
+h2.post-title=page.title || _p('no_title')
+.post-meta-content
+    .post-meta-word-count
+        i.fas.fa-file-word.fa-fw
+        span.word-count(title="字数大约")=symbolsCount(page.content.replace(/<.*?>/g,""))
+    .post-meta-date
+        i.fa-fw.fas.fa-calendar
+        time(title='发布时间:'+date(page[date], 'YYYY-M-D'))=date(page[date], 'YYYY-M-D')
+    .post-meta-reading
+        i.fab.fa-hotjar.fa-fw
+        span(title='热度')#busuanzi_value_page_pv
+    .post-meta-commentcount

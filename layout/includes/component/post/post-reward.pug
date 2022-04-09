@@ -1,0 +1,13 @@
+.post-reward
+    .reward-button.jy-btn-red=_p('post.reward')
+        .reward-main#reward
+            .reward-box.c-shadow
+                each item in theme.reward.rewards
+                    .reward-item
+                        if (item.url)
+                            a.reward-img(href=item.url)
+                                img(src=item.img alt=item.text)
+                        else
+                            .reward-img
+                                img(src=item.img alt=item.text)
+                        .reward-item-desc=item.text

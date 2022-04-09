@@ -1,0 +1,42 @@
+page:
+  archives: '归档'
+  tags: '标签'
+  categorys: '分类'
+  error404: '页面走丢啦！'
+
+side:
+  tags: ' 标签'
+  categorys: ' 分类'
+  search: '搜索'
+  toc: '文章目录'
+  siteCount:
+    headline: '网站统计'
+    total_post: '文章总数'
+    runtime: '已运行天数'
+    total_word: '总字数'
+    total_uv: '总访客'
+    total_pv: '总访问量'
+
+copy:
+  success: '复制成功'
+  error: '复制错误'
+  noSupport: '浏览器不支持'
+
+Snackbar:
+  day_to_night: '已切换为深色模式'
+  night_to_day: '已切换为浅色模式'
+
+search:
+  loading: '加载中...'
+  local-search: '本地搜索'
+  search-placeholder: '输入关键词搜索...'
+
+post:
+  copyUrl: '复制链接'
+  created: '创建于'
+  reward: '赞赏'
+  related: '相关推荐'
+  comment: '评论'
+
+no_title: '无标题'
+loading: '加载中...'

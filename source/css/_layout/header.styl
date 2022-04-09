@@ -1,0 +1,278 @@
+#header
+  position: fixed;
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width 100%
+  height $header-h = 50px
+  z-index 99
+  animation: bottom-effect 1s;
+  transition all .5s
+  a
+    &:hover
+      text-decoration none
+  .header-inner
+    height: inherit;
+    max-width 1380px
+    margin 0 auto
+    display flex
+    justify-content: space-between
+    align-items center
+    padding: 0 20px;
+    +maxWidth768()
+      padding: 0 15px;
+    #navbar-toggle
+      color var(--nav-font)
+    #site-name
+      padding 8px 0
+      height: inherit;
+      a
+        font-size 1.3em
+        font-weight: bold;
+        line-height: 1.6;
+        color var(--nav-font)
+        img
+          max-width: 100%;
+          max-height: 100%;
+    #nav-menus
+      flex 1
+      padding: 0 20px;
+      +maxWidth768()
+        display none
+      .menus
+        line-height: $header-h;
+        ul
+          display flex
+          justify-content: center
+          align-items: center
+          margin-bottom 0
+          .menu
+            position: relative;
+            max-height $header-h
+            transition: all .3s;
+            &:hover
+              a
+                .fa-chevron-down
+                  transform rotate(-90deg)
+              .sub-menus
+                display block
+            a
+              position: relative;
+              display inline-block
+              padding: 0 8px;
+              color var(--nav-font)
+              font-size 0.78rem
+              transition: color .5s
+              span
+                padding: 0 5px;
+              .fa-chevron-down
+                transition transform .4s
+            .name
+              &:hover
+                &:before
+                  opacity: 1;
+              &:before
+                position: absolute;
+                content: "";
+                width: 4px;
+                height: 4px;
+                left: 50%
+                bottom: 5px;
+                border-radius 50%
+                opacity: 0;
+                transform translateX(-50%)
+                background-color: var(--font-white);
+                transition: all .3s;
+            .sub-menus
+              position: absolute;
+              min-width: 120px;
+              display none
+              z-index: 99;
+              line-height: 2;
+              margin-top: -1px;
+              border-radius: var(--main-radius);
+              box-shadow: var(--main-shadow);
+              background-color: var(--main-bg);
+              overflow hidden
+              animation sub_menus .3s ease both
+              li
+                max-height 38px
+                transition: background-color .5s
+                &:hover
+                  background-color: var(--depth-hover-bg);
+                a
+                  width: 100%
+                  padding: 6px 10px;
+                  color var(--font-color)
+                  white-space: nowrap;
+
+    .r-menu
+      display flex
+      justify-content: center;
+      align-items: center;
+      max-height $header-h
+      a
+        display block
+        width: 30px;
+        height: 30px
+        padding: 0;
+        line-height: 30px;
+        text-align: center;
+        color var(--nav-font)
+        font-size 0.76rem
+        border-radius 50%
+      .moon-switch
+        margin-left: 10px;
+        a
+          background-color: var(--main-border-color);
+.header-bg
+  transform translateY(-100%)
+  box-shadow var(--main-shadow)
+  .menu
+    .name
+      &:before
+        background-color: var(--font-color)!important;
+  #navbar-toggle
+    i
+      color var(--font-color)!important
+  .header-inner
+    #site-name,#nav-menus,.r-menu
+      a
+        color var(--font-color)!important
+
+.header-visible
+  transform translateY(0)
+  & + .page-info
+    & + .layout #sidebar .side-sticky
+      top: 70px
+
+.page-info
+  display flex
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  background-color: var(--theme-color);
+  background-position: center;
+  background-size: cover;
+  height: 22em;
+  background-repeat: no-repeat;
+  overflow hidden
+  transition: all .5s;
+  animation: bottom-effect 1s;
+  &:before
+    position: absolute;
+    display block
+    content ''
+    width: 100%
+    height: 100%
+    top: 0
+    background-color: rgba(0,0,0,.1);
+  .post-top-img
+    position: absolute;
+    top: 0
+    right: 0
+    width: 70%;
+    height: 100%;
+    margin: 0 -20% 0 auto;
+    overflow: hidden;
+    transform: rotate(10deg) translateY(-30px) scale(1.1);
+    filter: blur(10px);
+    &:after
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      box-shadow: 106px -120px 200px 38px var(--post-info-color) inset
+    img
+      width: 100%!important;
+      height: 100%!important;
+      object-fit: cover;
+      min-width: 50vw;
+      min-height: 20rem;
+      opacity: .8;
+  .page-info-content
+    display flex
+    flex-direction column
+    justify-content: center;
+    align-items: center
+    height: 100%;
+    z-index: 98;
+    +maxWidth768()
+      width: 100%
+      padding: 0 5%;
+    h2,span
+      color var(--font-white)
+    h2
+      font-size 2em
+      font-weight 400
+      letter-spacing: 2px;
+    .sub_title
+      font-size 1.5em
+    .post-meta-info
+      display flex
+      align-items: center;
+      font-size 16px
+      color var(--font-white)
+    .post-meta-categories,.post-meta-tags
+      display flex
+      align-items: center;
+      .cate a,.tag
+        color var(--font-white)
+      .cate
+        margin-right: .5rem;
+        font-weight: 700;
+    .post-meta-tags
+      .tag
+        opacity: .7;
+        margin-right: .5rem;
+        &:hover
+          opacity: 1;
+    .post-meta-content
+      display flex
+      align-items: center;
+      color var(--font-white)
+      font-weight: 700;
+      font-size 16px
+      .post-meta-word-count,.post-meta-date
+        margin-right: .8rem;
+    .post-title
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin: .6rem 0
+      -webkit-line-clamp: 2;
+      padding: 0;
+    .post-meta-info,.post-meta-content
+      i
+        margin-right: 3px;
+.post
+  background-image: none!important
+  &:before
+    background-color: var(--post-info-color)!important;
+  .page-info-content
+    align-items: $post-info-text-align;
+.page
+  .page-info-content
+    align-items: $page-info-text-align;
+.homepage
+  height: $page-info-height;
+  .page-info-content
+    align-items: $index-info-text-align;
+    +maxWidth768()
+      align-items center
+  if $page-info-height == false
+    padding-top 50px
+    height: 0!important;
+
+.error404
+  #error-inner
+    padding-top: 50px;
+  #header
+    background var(--main-bg);
+    box-shadow var(--main-shadow)
+    .header-inner
+      a
+        color var(--font-color)!important

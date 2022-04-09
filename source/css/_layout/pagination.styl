@@ -1,0 +1,36 @@
+#pagination
+  margin-top 1rem
+  width: 100%
+  text-align center
+  .pagination
+    .page-number,.extend
+      display inline-block
+      width: w=1.6rem;
+      height: w
+      line-height w
+      text-align center
+      margin 0 5px
+      color var(--font-color)
+      border-radius var(--main-radius)
+      cursor: pointer
+      box-shadow: 0 0 8px var(--shadow-color);
+      background-color: var(--main-bg);
+    .page-number,.extend
+      &:hover
+        background-color: var(--main-hover-bg);
+    .current
+      color var(--title-color)
+      background-color: var(--main-hover-bg)
+  .post-pagination
+    display flex
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-bottom: .5rem;
+    border-bottom 1px solid var(--main-border-color)
+    .prev-post,.next-post
+      a
+        color var(--font-color)
+        font-size .76rem
+        padding: 10px 0;

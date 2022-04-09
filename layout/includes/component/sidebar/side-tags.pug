@@ -1,0 +1,6 @@
+.side-widget-tags.side-widget
+    .side-headline
+        i.fa-solid.fa-tag
+        span=_p('side.tags')
+    .side-tag-lists
+        !=tagcloud({color:true,start_color:'#f0524f',end_color:'#589df6',min_font:0.72,max_font: 0.72,unit: 'rem',orderby:name})

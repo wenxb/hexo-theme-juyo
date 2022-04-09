@@ -1,0 +1,16 @@
+.post-tools
+    .share-link
+        .share-copyurl.jy-btn(title=_p('post.copyUrl') onclick="jyUtils.copyPageUrl()")
+            i.fa-fw.fas.fa-link
+        .share-qrcode
+            .qrcode-btn.jy-btn
+                i.fa-fw.fas.fa-qrcode
+                .qrcode-main
+                    .qrcode-box.c-shadow
+                        #qrcode
+                        .text='当前页面二维码'
+
+    .post-tags
+        if page.tags.data.length > 0
+            each item in page.tags.data
+                a.cate(href=url_for(item.path))='# ' + item.name

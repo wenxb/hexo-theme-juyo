@@ -1,0 +1,28 @@
+-
+    var title = config.title || ''
+    var nav_align
+    if (theme.menu_align.enable === 'left') nav_align = 'f-left'
+    else if (theme.menu_align.enable === 'right') nav_align = 'f-right'
+    else nav_align = ''
+header#header
+    .header-inner
+        #navbar-toggle.visible-xs
+            i.fa-solid.fa-align-left
+        #site-name
+            if theme.logo
+                a.logo(href=url_for('/') title=title)
+                    img(src=theme.logo alt=title)
+            else
+                a(href=url_for('/') title=title)=title
+        include nav-menus
+        .r-menu
+            if theme.local_search.enable
+                .search-btn
+                    a(href='javascript:void(0);' id="search-btn")
+                        i.fa-fw(class='fas fa-search')
+            if theme.darkmode.enable
+                .moon-switch.hidden-xs
+                    a(href='javascript:void(0);' id="moon-switch")
+                        i.fa-fw(class='fa-regular fa-moon')
+if (!is_current('/404.html', [strict]))
+    include ../page-info/page-info

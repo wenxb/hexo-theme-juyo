@@ -1,0 +1,13 @@
+.jy-index-card.mb-10
+    each val in theme.index_card.card
+        - var title = val.text ? val.text : ''
+        - var url = val.url ? val.url : 'javascript:void(0);'
+        - var img = val.img ? val.img : ''
+        - if (!val.url) var target = ''
+        - else target = val.target ? val.target : '_blank'
+        .card-item
+            a(href=url_for(url) target=target)
+                .card.mb-10.c-shadow
+                    img(src=url_for(img) alt=config.title)
+                    .mask
+                    .text=title

@@ -1,0 +1,27 @@
+nav#nav-menus
+    .menus(class=nav_align)
+        ul
+            each value, key in theme.menu
+                if typeof value !== 'object'
+                    li.menu
+                        - let valueSplit = value.split('||')
+                        a.name(href=url_for(trim(valueSplit[0])))
+                            if valueSplit[1]
+                                i.fa-fw(class=trim(valueSplit[1]))
+                            span=key
+                else
+                    li.menu
+                        - let keySplit = key.split('||')
+                        a.name.group(href='javascript:void(0);')
+                            if keySplit[1]
+                                i.fa-fw(class=trim(keySplit[1]))
+                            span=trim(keySplit[0])
+                            i.fas.fa-chevron-down
+                        ul.sub-menus.bg-filter
+                            each val,key2 in value
+                                - let valSplit = val.split('||')
+                                li
+                                    a.child(href=url_for(trim(valSplit[0])))
+                                        if valSplit[1]
+                                            i.fa-fw(class=trim(valSplit[1]))
+                                        span=key2

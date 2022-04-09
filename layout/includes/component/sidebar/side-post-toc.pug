@@ -1,0 +1,6 @@
+if(toc(page.content))
+    .side-widget-posttoc.side-widget
+        .side-headline
+            i.fa-solid.fa-bars-staggered
+            span=_p('side.toc')
+            !=toc(page.content)

@@ -1,0 +1,66 @@
+#sidebar
+  padding: 0;
+  .side-sticky
+    position: sticky;
+    top: 15px
+    transition: .5s;
+  .side-headline
+    margin-bottom: 10px;
+    opacity: .8;
+    i
+      margin-right: 5px;
+  .side-widget
+    width: 100%
+    padding: 14px 16px
+    border-radius var(--main-radius)
+    box-shadow var(--main-shadow)
+    background-color: var(--main-bg);
+    margin-bottom: 15px;
+    a
+      color var(--font-color)
+      font-size 15px
+  .side-widget-posttoc
+    .toc
+      .toc-child
+        padding-left: 15px;
+      .toc-link
+        display block
+        width: 100%
+        padding: 1px 3px;
+        &:hover
+          color var(--link-color)
+      .current
+        color var(--font-white)
+        background-color: var(--theme-color);
+        .toc-number,.toc-text
+          color var(--font-white)
+  .side-widget-categories
+    .category-list
+      padding: 0 5px;
+      .category-list-item
+        a
+          display block
+          padding: 2px 5px;
+          opacity: .8;
+          &:hover
+            opacity: 1;
+        .category-list-child
+          display none
+  .side-widget-tags
+    .side-tag-lists
+      display flex
+      flex-wrap wrap
+      padding: 0 5px;
+      a
+        padding: 0 5px;
+        opacity: .8;
+        &:hover
+          opacity: 1;
+  .side-site-count
+    width: 100%
+    padding: 0 5px;
+    .site-count
+      display flex
+      font-size 15px
+      justify-content: space-between;
+      align-items: center;

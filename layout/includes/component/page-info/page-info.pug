@@ -1,0 +1,41 @@
+if theme.top_img.enable !== false
+    if is_home()
+        - var top_bg = theme.top_img.background.index || theme.top_img.background.default || false
+        - var pageType = 'homepage'
+    else if is_post()
+        - var top_bg = page.cover ||  page.top_img || false
+        - pageType = 'post'
+    else if is_page()
+        - var top_bg = page.top_img || theme.top_img.background.default || false
+        - pageType = 'page'
+    else if is_archive()
+        - var top_bg = theme.top_img.background.archives || page.top_img || theme.top_img.background.default || false
+        - pageType = 'page'
+    else if is_tag()
+        - var top_bg = theme.top_img.background.tags || page.top_img || theme.top_img.background.default || false
+        - pageType = 'page'
+    else if is_category()
+        - var top_bg = theme.top_img.background.categorys || page.top_img || theme.top_img.background.default || false
+        - pageType = 'page'
+    else
+        - var top_bg = page.top_img || theme.top_img.background.default || false
+        - pageType = ''
+
+if top_bg !== false
+    - var imgProp = top_bg && top_bg.indexOf('/') !== -1 ? `background-image: url('${url_for(top_bg)}')` : `background: ${top_bg}`
+    - var img = top_bg ? imgProp : ''
+    - var site_title = is_archive() ? fragment_cache('findArchivesTitle', function(){return findArchivesTitle(theme.menu);}) : page.title || page.tag || page.category || config.title
+.page-info(class=pageType style=img)
+    if is_post()
+        .post-top-img
+            img#post-info-img(src=url_for(top_bg))
+    .page-info-content.container
+        if is_home()
+            if theme.top_img.enable === true
+                h2=theme.title || config.title || ''
+                if theme.sub_title.enable
+                    span.sub_title=theme.sub_title.text || ''
+        else if is_post()
+            include post-info
+        else
+            h2=site_title

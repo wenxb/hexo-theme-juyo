@@ -1,0 +1,24 @@
+script.
+    function qrcodeFn(){
+        if (document.getElementById('qrcode')) {
+            getScript('!{url_for(theme.CDN.qrcode)}')
+                .then(() => {
+                    var href = window.location.href
+                    if(window.location.search){
+                        var root_url = href.split("?")[0]
+                    }else{
+                        root_url = href
+                    }
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        text: root_url,
+                        width: 250,
+                        height: 250,
+                        colorDark: "#000",
+                        colorLight: "#fff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                })
+
+        }
+    }
+    window.addEventListener('pjax:complete',qrcodeFn)

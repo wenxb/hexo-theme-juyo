@@ -41,3 +41,5 @@ if (theme.snackbar && theme.snackbar.enable)
 
 include head/config-site
 !=fragment_cache('injectHeadJs', function(){return inject_head_js()})
+
+!=fragment_cache('injectHead', function(){return injectHtml(theme.inject.head)})

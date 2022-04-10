@@ -13,6 +13,16 @@ hexo.extend.helper.register('page_description', function () {
         return description
     }
 })
+
+hexo.extend.helper.register('injectHtml', function (data) {
+    let result = ''
+    if (!data) return ''
+    for (let i = 0; i < data.length; i++) {
+        result += data[i]
+    }
+    return result
+})
+
 hexo.extend.helper.register('authority', function (url = null) {
     return prettyUrls(url || this.url, { trailing_index: false, trailing_html: false })
 })

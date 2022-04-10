@@ -1,7 +1,7 @@
 div
     script(src=url_for(theme.CDN.utils_js))
     script(src=url_for(theme.CDN.main_js))
-    //- search
+
     if theme.lightbox
         script(src=url_for(theme.CDN.medium_zoom))
     if theme.loading_anime.enable
@@ -36,3 +36,4 @@ div
             qrcodeFn();
             panguFn();
         })
+    != fragment_cache('injectBottom', function () { return injectHtml(theme.inject.bottom) })

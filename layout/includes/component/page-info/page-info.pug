@@ -26,7 +26,7 @@ if top_bg !== false
     - var img = top_bg ? imgProp : ''
     - var site_title = is_archive() ? fragment_cache('findArchivesTitle', function(){return findArchivesTitle(theme.menu);}) : page.title || page.tag || page.category || config.title
 .page-info(class=pageType style=img)
-    if is_post()
+    if is_post() && top_bg !== false
         .post-top-img
             img#post-info-img(src=url_for(top_bg))
     .page-info-content.container

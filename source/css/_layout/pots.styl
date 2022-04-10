@@ -1,3 +1,55 @@
+.post-inner
+  word-wrap: break-word
+  overflow-wrap: break-word
+
+  h2
+    font-size 1.6em
+  a
+    color: var(--link-color)
+
+    &:hover
+      text-decoration: underline
+
+  img
+    display: block
+    margin: 0 auto 20px
+    max-width: 100%
+    transition: filter 375ms ease-in .2s
+
+  p
+    margin: 0 0 16px
+
+  iframe
+    margin: 0 0 20px
+
+  kbd
+    margin: 0 3px
+    padding: 3px 5px
+    border: 1px solid #b4b4b4
+    border-radius: 3px
+    background-color: #f8f8f8
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25), 0 2px 1px 0 rgba(255, 255, 255, .6) inset
+    color: #34495e
+    white-space: nowrap
+    font-weight: 600
+    font-size: .9em
+    font-family: Monaco, 'Ubuntu Mono', monospace
+    line-height: 1em
+
+  ul li
+    list-style-type: circle
+  ol li
+    list-style-type: decimal;
+  ol,ul
+    padding-left: 20px;
+    margin: 1.4em 0;
+    li
+      margin: 5px 0
+      p
+        margin: 0 0 8px
+  > :last-child
+    margin-bottom: 0 !important
+
 .post-tools
   display flex
   justify-content: space-between;
@@ -170,3 +222,4 @@
   span
     font-size 1rem
     font-weight: 700;
+

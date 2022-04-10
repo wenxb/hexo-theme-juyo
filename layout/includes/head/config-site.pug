@@ -1,4 +1,6 @@
 -
+    const titleVal = pageTitle.replace(/'/ig,"\\'")
+
     let isHighlightShrink
     if (theme.highlight_shrink === 'none') isHighlightShrink = 'undefined'
     else if (page.highlight_shrink === true || page.highlight_shrink === false) isHighlightShrink = page.highlight_shrink
@@ -15,6 +17,12 @@
         })
     }
 
+    var showToc = false
+    if (theme.sidebar.enable && page.sidebar !== false) {
+        const pageToc = page.toc === false ? page.toc : true
+        showToc = pageToc && toc(page.content) !== ''
+    }
+
     let highlight = 'undefined';
     if ((config.highlight && config.highlight.enable) || (config.prismjs && config.prismjs.enable)) {
         highlight = JSON.stringify({
@@ -24,11 +32,14 @@
             highlightHeightLimit: theme.highlight_height_limit
         })
     }
-script.
+
+script#config-diff.
     var GLOBAL_CONFIG = {
         root: '!{config.root}',
         isPost: !{is_post()},
         isHome: !{is_home()},
+        isToc: !{showToc},
+        title: '!{titleVal}',
         localSearch: '!{config.search.path}',
         runTime: '!{date_xml(theme.runtime.start_time)}',
         islazyload: !{theme.lazyload.enable},

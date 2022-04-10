@@ -20,20 +20,24 @@
       color var(--font-color)
       font-size 15px
   .side-widget-posttoc
-    .toc
-      .toc-child
-        padding-left: 15px;
-      .toc-link
-        display block
-        width: 100%
-        padding: 1px 3px;
-        &:hover
-          color var(--link-color)
-      .current
-        color var(--font-white)
-        background-color: var(--theme-color);
-        .toc-number,.toc-text
+    .toc-content
+      &:not(.is-expand)
+        .toc-child
+          display none
+      .toc
+        .toc-child
+          padding-left: 15px;
+        .toc-link
+          display block
+          width: 100%
+          padding: 1px 3px;
+          &:hover
+            color var(--link-color)
+        .current
           color var(--font-white)
+          background-color: var(--theme-color);
+          .toc-number,.toc-text
+            color var(--font-white)
   .side-widget-categories
     .category-list
       padding: 0 5px;

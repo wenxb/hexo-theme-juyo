@@ -3,7 +3,7 @@ if theme.pjax.exclude
   each val in theme.pjax.exclude
     - pjaxExclude = pjaxExclude + `:not([href="${val}"])`
 
-- let pjaxSelectors = ['title','#body-wrap','#right-side','.js-pjax']
+- let pjaxSelectors = ['title','#config-diff','#body-wrap','#right-side','.js-pjax']
 
 script(src=url_for(theme.CDN.pjax))
 script.

@@ -1,6 +1,14 @@
+- let tocNumber = page.toc_number !== undefined ? page.toc_number : theme.toc.number
+- let tocExpand = page.toc_expand !== undefined ? page.toc_expand : theme.toc.expand
+- let tocExpandClass = tocExpand ? 'is-expand' : ''
+
 if(toc(page.content))
     .side-widget-posttoc.side-widget
         .side-headline
             i.fa-solid.fa-bars-staggered
             span=_p('side.toc')
-            !=toc(page.content)
+            span.toc-percentage
+        if (page.encrypt === true)
+            .toc-content(class=tocExpandClass style="display:none")!=toc(page.origin, {list_number: tocNumber})
+        else
+            .toc-content(class=tocExpandClass)!=toc(page.content, {list_number: tocNumber})

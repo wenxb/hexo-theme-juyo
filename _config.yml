@@ -2,11 +2,11 @@
 ########################### 主题相关 #########################
 #############################################################
 
-favicon:
+favicon: img/favicon.ico
 
-logo:
+logo: # https://pic.juyovo.com/2022/03/24/381f08c5add96.png
 
-title:
+title: 爱吃橘柚
 sub_title:
   enable: true
   text: A simple and practical Hexo theme
@@ -34,7 +34,6 @@ theme_color:
   boton_color:
   link: '#0066cc'
   link_hover:
-
 # 全局圆角大小
 global_radius: 4px
 
@@ -49,15 +48,27 @@ font:
 #############################################################
 ######################### 页面相关 ###########################
 #############################################################
-
 # 主页图文卡片
+#  card:
 #    - img: 图片
-#      url: 跳转链接
+#      url: 链接
 #      text: 文字
-#      target: 跳转方式 _blank(跳转新窗口) _self(不跳转)
+#      target: _blank || _self
 index_card:
   enable: true
   card:
+    - img:
+      url:
+      text:
+      target:
+    - img:
+      url:
+      text:
+      target:
+    - img:
+      url:
+      text:
+      target:
     - img:
       url:
       text:
@@ -91,29 +102,31 @@ default_post: img/default-cover.svg
 post_meta:
   categories: true
 
-# 文章二维码
 qrcode:
   enable: true
 
-# 版权声明
 post_copyright:
   enable: true
 
-# 相关文章
 related_post:
   enable: true
   limit: 4
 
-# 赞赏
+# toc (目录)
+toc:
+  number: true
+  expand: true
+  style_simple: false # for post
+
 reward:
   enable: true
   rewards:
     - img:
       url:
-      text: 微信
+      text:
     - img:
       link:
-      text: 支付宝
+      text:
 
 comment:
   use: valine
@@ -133,12 +146,10 @@ valine:
 ######################## 功能相关 ############################
 ############################################################
 
-# 图片灯箱
 lightbox: true
 
-# 网站开始时间
 runtime:
-  start_time: #例如 2022-03-09
+  start_time:
 
 # css前缀 兼容浏览器
 css_prefix: true
@@ -245,6 +256,7 @@ footer:
 
 # Code Blocks (代码相关)
 # --------------------------------------
+
 highlight_theme: mac light #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # 显示代码语言
@@ -309,7 +321,6 @@ CDN:
   main_js: '/js/main.js'
   utils_js: '/js/utils.js'
   bootstrap: 'https://cdn.juyovo.com/libs/bootstrap/3.4.1/css/bootstrap.min.css'
-  jquery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js'
   pjax: 'https://cdn.juyovo.com/libs/pjax/pjax.min.js'
   qrcode: 'https://cdn.juyovo.com/libs/qrcodejs/1.0.0/qrcode.min.js'
 

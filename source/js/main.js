@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const switchDarkMode = () => {
         const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
         if (nowMode === 'light') {
@@ -393,84 +392,6 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     const scrollFn = function () {
 
-        window.tocScrollFn = () => {
-            function TocScrollSpy(element, options) {
-                this.$ele = $(element);
-                this.$win = $(window);
-                this.options = $.extend({}, options);
-                this.boxs = {};
-                this.init();
-            }
-
-            TocScrollSpy.prototype = {
-                init: function () {
-                    this.$a = this.$ele.find(this.options.tocItems);
-                    this.getBoxTop();
-
-                    this.$a.on("click", $.proxy(this.clickSwitch, this));
-
-                    this.$win.on("scroll", $.proxy(this.scrolling, this));
-
-                    return this;
-                },
-
-                changeToc: function (self, $a) {
-                    var current = self.options.current;
-                    self.$ele.find("." + current).removeClass(current);
-                    $a.addClass(current);
-                },
-
-                getBoxTop: function () {
-                    var self = this;
-                    self.$a.each(function () {
-                        let boxId = $(this).attr("href").split('#')[1];
-                        let boxTop = $("#" + boxId).offset().top;
-                        self.boxs[boxId] = parseInt(boxTop);
-                    });
-                },
-
-                scrolling: function () {
-                    var st = $(window).scrollTop();
-                    for (let box in this.boxs) {
-                        if (st >= this.boxs[box] - 100) {
-                            let $ca = this.$ele.find('a[href="#' + box + '"]');
-                            this.changeToc(this, $ca);
-                        }
-                    }
-                },
-
-                clickSwitch: function (e) {
-                    let $a = $(e.currentTarget);
-                    let self = this;
-                    let target = $a.attr("href");
-                    if (!$a.hasClass(self.options.current)) {
-                        self.scrollTo(target);
-                    }
-
-                    e.preventDefault();
-                },
-
-                scrollTo: function (target) {
-                    let offset = $(target).offset().top;
-                    let $el = $('html,body');
-                    if (!$el.is(":animated")) {
-                        $el.animate({
-                            scrollTop: offset - 60
-                        }, this.options.speed, 'swing');
-                    }
-                }
-            };
-
-            $.fn.tocScrollSpy = function (options) {
-                $.data(new TocScrollSpy(this, options));
-            };
-
-            $(".toc").tocScrollSpy({
-                tocItems: '.toc-link', current: "current", speed: 400
-            });
-
-        }
-
         function scrollJudge(currentTop) {
             const result = currentTop > initTop
             initTop = currentTop
@@ -515,6 +436,132 @@ document.addEventListener('DOMContentLoaded', function () {
         window.onscroll = scrollCollect();
     }
 
+    /**
+     * toc,anchor
+     */
+    const scrollFnToDo = function () {
+        const isToc = GLOBAL_CONFIG.isToc
+        const $article = document.querySelector('.post-inner')
+        const $cardTocLayout = document.querySelector('.side-widget-posttoc')
+
+        if (!($article && (isToc || $cardTocLayout))) return
+
+        let $tocLink, $cardToc, scrollPercent, autoScrollToc, isExpand
+
+        if (isToc) {
+            $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
+            $tocLink = $cardToc.querySelectorAll('.toc-link')
+            const $tocPercentage = $cardTocLayout.querySelector('.toc-percentage')
+            isExpand = $cardToc.classList.contains('is-expand')
+
+            scrollPercent = currentTop => {
+                const docHeight = $article.clientHeight
+                const winHeight = document.documentElement.clientHeight
+                const headerHeight = $article.offsetTop
+                const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
+                const scrollPercent = (currentTop - headerHeight) / (contentMath)
+                const scrollPercentRounded = Math.round(scrollPercent * 100)
+                $tocPercentage.textContent = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
+            }
+
+            window.mobileToc = {
+                open: () => {
+                    $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: 55px'
+                },
+
+                close: () => {
+                    $cardTocLayout.style.animation = 'toc-close .2s'
+                    setTimeout(() => {
+                        $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+                    }, 100)
+                }
+            }
+
+            // toc元素點擊
+            $cardToc.addEventListener('click', e => {
+                e.preventDefault()
+                const target = e.target.classList
+                if (target.contains('toc-content')) return
+                const $target = target.contains('toc-link')
+                    ? e.target
+                    : e.target.parentElement
+                jyUtils.scrollToDest(jyUtils.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).replace('#', ''))), 300)
+                if (window.innerWidth < 900) {
+                    window.mobileToc.close()
+                }
+            })
+
+            autoScrollToc = item => {
+                const activePosition = item.getBoundingClientRect().top
+                const sidebarScrollTop = $cardToc.scrollTop
+                if (activePosition > (document.documentElement.clientHeight - 100)) {
+                    $cardToc.scrollTop = sidebarScrollTop + 150
+                }
+                if (activePosition < 100) {
+                    $cardToc.scrollTop = sidebarScrollTop - 150
+                }
+            }
+        }
+
+        // find head position & add active class
+        const list = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
+        let detectItem = ''
+        const findHeadPosition = function (top) {
+            if (top === 0) {
+                return false
+            }
+
+            let currentId = ''
+            let currentIndex = ''
+
+            list.forEach(function (ele, index) {
+                if (top > jyUtils.getEleTop(ele) - 80) {
+                    const id = ele.id
+                    currentId = id ? '#' + encodeURI(id) : ''
+                    currentIndex = index
+                }
+            })
+
+            if (detectItem === currentIndex) return
+
+            jyUtils.updateAnchor(currentId)
+
+            detectItem = currentIndex
+
+            if (isToc) {
+                $cardToc.querySelectorAll('.current').forEach(i => { i.classList.remove('current') })
+
+                if (currentId === '') {
+                    return
+                }
+
+                const currentActive = $tocLink[currentIndex]
+                currentActive.classList.add('current')
+
+                setTimeout(() => {
+                    autoScrollToc(currentActive)
+                }, 0)
+
+                if (isExpand) return
+                let parent = currentActive.parentNode
+
+                for (; !parent.matches('.toc'); parent = parent.parentNode) {
+                    if (parent.matches('li')) parent.classList.add('current')
+                }
+            }
+        }
+
+        // main of scroll
+        window.tocScrollFn = function () {
+            return jyUtils.throttle(function () {
+                const currentTop = window.scrollY || document.documentElement.scrollTop
+                isToc && scrollPercent(currentTop)
+                findHeadPosition(currentTop)
+            }, 100)()
+        }
+        window.addEventListener('scroll', tocScrollFn)
+    }
+
     //网站运行时间
     const siteRuntime = function () {
         const $runtimeDay = document.getElementById('site-runtime-day')
@@ -548,7 +595,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.refreshFn = function () {
         scrollFn();
-        tocScrollFn();
         postColor();
         addTableWrap();
         tabsFn.clickFnOfTabs();
@@ -560,10 +606,9 @@ document.addEventListener('DOMContentLoaded', function () {
         addHighlightTool();
         clickFnOfTagHide();
         siteRuntime();
+        scrollFnToDo();
         document.getElementById('moon-switch').addEventListener('click', switchDarkMode)
-        document.getElementById('navbar-toggle').addEventListener('click', () => {
-            sidebarFn.open()
-        })
+        document.getElementById('navbar-toggle').addEventListener('click', () => { sidebarFn.open()  })
     }
     refreshFn();
     unRefreshFn();

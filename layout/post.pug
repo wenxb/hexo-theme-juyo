@@ -14,10 +14,9 @@ block content
             include includes/component/post/post-copyright
         include includes/component/pagination
         if theme.related_post.enable
-            .head-line
-                span=_p('post.related')
             include includes/component/post/post-related
         if page.comment || theme.comment.use
+            - var commentsJsLoad = true
             .head-line
                 span=_p('post.comment')
             !=partial('includes/third-party/comments/index', {}, {cache: true})

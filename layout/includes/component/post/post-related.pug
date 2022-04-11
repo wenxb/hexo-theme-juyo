@@ -1,3 +1,6 @@
-.related-posts
-    .related-posts-lists
-        !=related_posts(page, site.posts)
+if (related_posts(page, site.posts))
+    .head-line
+        span=_p('post.related')
+    .related-posts
+        .related-posts-lists
+            !=related_posts(page, site.posts)

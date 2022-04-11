@@ -313,80 +313,6 @@ document.addEventListener('DOMContentLoaded', function () {
         jyUtils.loadLightbox(document.querySelectorAll('.post-inner img:not(.no-lightbox)'))
     }
 
-    //postColor
-    window.postColor = function () {
-        function getPostMainColor(img) {
-            function getMainColor(image) {
-                return new Promise((resolve, reject) => {
-                    try {
-                        const canvas = document.createElement("canvas");
-                        const img = new Image();
-                        img.src = image;
-                        img.crossOrigin = '';
-                        img.onload = () => {
-                            let color = getImageColor(canvas, img);
-                            resolve(color);
-                        };
-                    } catch (e) {
-                        reject(e);
-                    }
-                });
-            }
-
-            function getImageColor(canvas, img) {
-                const context = canvas.getContext("2d");
-                context.drawImage(img, 0, 0);
-
-                let pixelData = context.getImageData(0, 0, canvas.width, canvas.height).data;
-                return getCountsArr(pixelData);
-            }
-
-            function getCountsArr(pixelData) {
-                let colorList = [];
-                let rgba = [];
-                let rgbaStr = "";
-                for (let i = 0; i < pixelData.length; i += 4) {
-                    rgba[0] = pixelData[i];
-                    rgba[1] = pixelData[i + 1];
-                    rgba[2] = pixelData[i + 2];
-                    rgba[3] = pixelData[i + 3];
-
-                    if (rgba.indexOf(undefined) !== -1 || pixelData[i + 3] === 0) {
-                        continue;
-                    }
-                    rgbaStr = rgba.join(",");
-                    if (rgbaStr in colorList) {
-                        ++colorList[rgbaStr];
-                    } else {
-                        colorList[rgbaStr] = 1;
-                    }
-                }
-                var arr = []
-                for (let prop in colorList) {
-                    arr.push({
-                        color: `rgba(${prop})`
-                    });
-                }
-                // 数组排序
-                arr.sort((a, b) => {
-                    return b.count - a.count;
-                });
-
-                return arr;
-            }
-
-            getMainColor(img.getAttribute('data-lazy-src') || img.src).then(function (arr) {
-                const color = arr[0].color
-                document.body.style.setProperty('--post-info-color', color)
-            })
-        }
-
-        const post_top_img = document.getElementById('post-info-img');
-        if (post_top_img) {
-            getPostMainColor(post_top_img);
-        }
-    }
-
     /**
      * 滚动处理
      */
@@ -595,7 +521,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.refreshFn = function () {
         scrollFn();
-        postColor();
         addTableWrap();
         tabsFn.clickFnOfTabs();
         tabsFn.backToTop();

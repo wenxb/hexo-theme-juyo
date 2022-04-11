@@ -16,13 +16,13 @@ sub_title:
 # title: link || icon
 # title || icon:
 #   sub_title: link || icon
-menu:
-  首页: / || fas fa-home
-  文章: /archives/ || fas fa-archive
-  标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
-  友情链接: /link/ || fas fa-heart
-  关于: /about/ || fas fa-user
+#menu:
+#  首页: / || fas fa-home
+#  文章: /archives/ || fas fa-archive
+#  标签: /tags/ || fas fa-tags
+#  分类: /categories/ || fas fa-folder-open
+#  友情链接: /link/ || fas fa-heart
+#  关于: /about/ || fas fa-user
 
 avatar:
   img:
@@ -155,6 +155,9 @@ valine:
 #############################################################
 ######################## 功能相关 ############################
 ############################################################
+rgbaster:
+  enable: true
+  exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ]
 
 lightbox: true
 
@@ -340,8 +343,6 @@ CDN:
 
   local_search: '/js/search/local-search.js'
 
-  echarts: 'https://cdn.juyovo.com/libs/echarts/echarts.min.js'
-  echarts_gl: 'https://cdn.juyovo.com/libs/echarts/echarts-gl.min.js'
   mermaid: 'https://cdn.juyovo.com/libs/mermaid/mermaid.min.js'
   mathjax: 'https://cdn.juyovo.com/libs/mathjax/3.2.0/es5/a11y/assistive-mml.min.js'
 
@@ -360,6 +361,8 @@ CDN:
   aplayer_css: 'https://cdn.juyovo.com/libs/aplayer/1.10.1/APlayer.min.css'
   aplayer_js: 'https://cdn.juyovo.com/libs/aplayer/1.10.1/APlayer.min.js'
   meting_js: 'https://cdn.juyovo.com/libs/metingjs/1.2.0/Meting-wipe.min.js'
+
+  rgbaster: 'https://cdn.juyovo.com/libs/rgbaster/2/rgbaster.min.js'
 
   prismjs_js: 'https://cdn.juyovo.com/libs/prismjs/prism.min.js'
   prismjs_lineNumber_js: 'https://cdn.juyovo.com/libs/prismjs/plugins/line-numbers/prism-line-numbers.min.js'

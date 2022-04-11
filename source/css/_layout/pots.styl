@@ -1,7 +1,6 @@
 .post-inner
   word-wrap: break-word
   overflow-wrap: break-word
-
   h2
     font-size 1.6em
   a
@@ -41,12 +40,15 @@
   ol li
     list-style-type: decimal;
   ol,ul
-    padding-left: 20px;
+    padding-left: 1rem;
     margin: 1.4em 0;
     li
       margin: 5px 0
       p
         margin: 0 0 8px
+  ol
+    +maxWidth768()
+      padding-left: 1.25rem;
   > :last-child
     margin-bottom: 0 !important
 
@@ -206,9 +208,12 @@
           position: absolute;
           top: 50%
           left: 50%
+          width: 100%;
+          padding: 0 15px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          text-align: center;
           transform translate(-50%,-50%)
           color var(--font-white)
 

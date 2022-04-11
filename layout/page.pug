@@ -11,3 +11,6 @@ block content
                 include includes/page/link.pug
             default
                 include includes/page/default_page
+        if page.comment !== false && theme.comment && theme.comment.use
+            - var commentsJsLoad = true
+            !=partial('includes/third-party/comments/index', {}, {cache: true})

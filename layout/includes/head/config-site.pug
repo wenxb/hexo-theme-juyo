@@ -33,12 +33,21 @@
         })
     }
 
+    let rgbaster = 'undefined';
+    if (theme.rgbaster.enable && is_post()){
+        rgbaster = JSON.stringify({
+            exclude: theme.rgbaster.exclude
+        })
+    }
+
+
 script#config-diff.
     var GLOBAL_CONFIG = {
         root: '!{config.root}',
         isPost: !{is_post()},
         isHome: !{is_home()},
         isToc: !{showToc},
+        rgbaster: !{rgbaster},
         title: '!{titleVal}',
         localSearch: '!{config.search.path}',
         runTime: '!{date_xml(theme.runtime.start_time)}',

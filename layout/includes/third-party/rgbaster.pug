@@ -1,0 +1,21 @@
+script.
+    (() => {
+        const $post_img = document.getElementById('post-info-img');
+        if ($post_img) {
+            window.runRgbster = () => {
+                const exclude = GLOBAL_CONFIG.rgbaster.exclude;
+                const img = $post_img.src || $post_img.getAttribute('data-lazy-src')
+                RGBaster.colors(img, {
+                    exclude: exclude, success: function (payload) {
+                        document.body.style.setProperty('--post-info-color', payload.dominant);
+                    }
+                })
+            }
+            const loadRgbster = () => {
+                getScript('!{theme.CDN.rgbaster}').then(runRgbster)
+            }
+            window.pjax ? loadRgbster() : document.addEventListener('DOMContentLoaded', loadRgbster)
+        } else {
+            document.body.style.setProperty('--post-info-color', '');
+        }
+    })()

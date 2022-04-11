@@ -4,30 +4,45 @@ div
 
     if theme.lightbox
         script(src=url_for(theme.CDN.medium_zoom))
+
     if theme.loading_anime.enable
         !=partial('includes/component/loading/loading-js', {}, {cache: true})
+
     if theme.lazyload.enable
         script(src=url_for(theme.CDN.lazyload))
+
     if theme.snackbar.enable
         script(src=url_for(theme.CDN.snackbar))
+
     if theme.local_search.enable
       script(src=url_for(theme.CDN.local_search))
+
     != partial("includes/third-party/prismjs", {}, { cache: true })
-    if theme.comment.use
-        include ./third-party/comments/js.pug
+
     if theme.pangu.enable
         != partial("includes/third-party/pangu", {}, {cache: true})
+
     if theme.qrcode.enable
         != partial("includes/third-party/qrcode", {}, {cache: true})
+
     if theme.busuanzi.site_uv || theme.busuanzi.site_pv || theme.busuanzi.page_pv
         script(src=url_for(theme.CDN.busuanzi) async data-pjax)
+
     .js-pjax
         include ./third-party/math/index.pug
+
+        if theme.rgbaster.enable
+            include ./third-party/rgbaster
+
+        if commentsJsLoad
+            include ./third-party/comments/js.pug
+
     if theme.aplayer && theme.aplayer.enable
         if theme.pjax.enable || theme.aplayer.per_page
             include ./third-party/aplayer.pug
         else if page.aplayer
             include ./third-party/aplayer.pug
+
     if theme.pjax.enable
         != partial("includes/third-party/pjax", {}, {cache: true})
 

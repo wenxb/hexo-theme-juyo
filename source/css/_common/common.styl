@@ -102,6 +102,8 @@
             height: 100%
             border-radius var(--main-radius)
             overflow hidden
+            +maxWidth768()
+              border-radius var(--main-radius) var(--main-radius) 0 0
             img
               width: 100%
               height: 100%
@@ -143,6 +145,7 @@
         .extract
           line-height: 1.6;
           color var(--meta-info-color)
+          margin-top: 5px;
       .article-meta
         display flex
         justify-content: space-between;

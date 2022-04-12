@@ -13,4 +13,6 @@ block content
                 include includes/page/default_page
         if page.comment !== false && theme.comment && theme.comment.use
             - var commentsJsLoad = true
+            .head-line
+                span=_p('post.comment')
             !=partial('includes/third-party/comments/index', {}, {cache: true})

@@ -148,13 +148,14 @@
   padding: 1rem;
   border-radius var(--main-radius)
   .post-copyright-title
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     span
       font-weight: 700;
       font-size: 1rem;
       line-height: 1.38;
       overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
   .post-copyright-url
     button
       margin-left: 5px;

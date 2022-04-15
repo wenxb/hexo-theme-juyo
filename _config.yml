@@ -34,6 +34,10 @@ theme_color:
   boton_color:
   link: '#0066cc'
   link_hover:
+  blockquote_bg: '#fff9f9'
+  code_background:
+  code_foreground:
+
 # 全局圆角大小
 global_radius: 4px
 

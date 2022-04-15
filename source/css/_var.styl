@@ -1,6 +1,8 @@
 //default
 $default-theme-color = #5aa2f4
 $default-link-color = #0066cc
+$light-red = #F47466
+$light-orange = #FF7242
 $default-font-family = apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Lato,Roboto,'PingFang-SC','Microsoft YaHei',sans-serif
 // code
 $line-height-code-block = 1.6
@@ -12,6 +14,8 @@ $gray-font-color = #999999
 $font-light-color = #656577
 $font-white = #fff
 $font-color = #3c4858
+$code-foreground = $themeColorEnable && hexo-config('theme_color.code_foreground') ? convert(hexo-config('theme_color.code_foreground')) : $light-red
+$code-background = $themeColorEnable && hexo-config('theme_color.code_background') ? convert(hexo-config('theme_color.code_background')) : rgba(27, 31, 35, .05)
 $default-code-font = consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif
 $code-font-family = hexo-config('font.code-font-family') ? unquote(hexo-config('font.code-font-family')) : $default-code-font
 $code-font-size = hexo-config('font.code-font-size') ? convert(hexo-config('font.code-font-size')) : 16px
@@ -20,6 +24,9 @@ $footer-bg = hexo-config('footer.bgc') ? convert(hexo-config('footer.bgc')) : ''
 $input-bg = #f6f6f8
 $dark-black = #000000
 $depth-hover-bg = #fafafa
+$light-grey = #eee
+$blockquote-bg = hexo-config('theme_color.blockquote_bg') ? convert(hexo-config('theme_color.blockquote_bg')) : $theme-color
+$blockquote-padding-color = darken($blockquote-bg,30%)
 $main-border-color = rgba(49, 51, 53,.1)
 $link-color = hexo-config('theme_color.link') ? convert(hexo-config('theme_color.link')) : $default-link-color
 $link-light-color = lighten($link-color, 92%)

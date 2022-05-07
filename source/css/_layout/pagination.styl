@@ -30,14 +30,30 @@
     padding-bottom: .5rem;
     border-bottom 1px solid var(--main-border-color)
     .prev-post,.next-post
-      display block
       width: 50%
       padding: 0 5px;
+      line-height: 1.2;
       a
+        display: flex;
+        align-items: center;
         color var(--font-color)
         font-size .76rem
         padding: 10px 0;
+        &:hover
+          text-decoration none!important
+          color var(--link-color)
+        span
+          display block
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        i
+          padding: 5px;
     .prev-post
       text-align: left
     .next-post
       text-align: right;
+      a
+        justify-content: flex-end;

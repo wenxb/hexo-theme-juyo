@@ -12,11 +12,11 @@ if is_post()
                 if(page.prev)
                     a(href=url_for(page.prev.path))
                         i.fa-solid.fa-angle-left
-                        =' '+page.prev.title
+                        span=' '+page.prev.title
             .next-post
                 if(page.next)
                     a(href=url_for(page.next.path))
-                        =page.next.title+' '
+                        span=page.next.title+' '
                         i.fa-solid.fa-angle-right
 else
     #pagination

@@ -147,6 +147,7 @@
   background-color: var(--main-gray-bg);
   padding: 1rem;
   border-radius var(--main-radius)
+  overflow hidden
   .post-copyright-title
     overflow: hidden;
     text-overflow: ellipsis;
@@ -157,19 +158,22 @@
       line-height: 1.38;
       overflow: hidden;
   .post-copyright-url
+    margin: 5px 0;
     button
       margin-left: 5px;
     a,i
       transition .3s
-      color var(--gray-font-color)
+      opacity: .8;
+      color var(--font-color)
       &:hover
-        color var(--font-color)
+        opacity: 1;
   .post-copyright-notice
     font-size .7rem
     a
-      color var(--gray-font-color)
+      opacity: .8;
+      color var(--font-color)
       &:hover
-        color var(--font-color)
+        opacity: 1;
 
 .related-posts
   .related-posts-lists
